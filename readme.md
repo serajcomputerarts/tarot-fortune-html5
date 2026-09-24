@@ -85,18 +85,8 @@ tarot-fortune-html5/
 ### Tarot Reading Example
 
 <p align="center">
-  <img src="assetsscreen_shots/s2.jpg" alt="Tarot Fortune Reading Example" width="800">
+  <img src="screen_shots/s2.jpg" alt="Tarot Fortune Reading Example" width="800">
 </p>
-
-> [!IMPORTANT]
-> Place your screenshots in the `assets/screenshots/` folder with these exact names:
->
-> ```text
-> s1.png
-> s2.png
-> ```
-
----
 
 ## 🚀 How to Run the Project
 
