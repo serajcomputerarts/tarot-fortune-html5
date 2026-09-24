@@ -1,0 +1,306 @@
+:root {
+  --dark: #12091e;
+  --purple: #30184d;
+  --gold: #d7ab51;
+  --light-gold: #f8dda0;
+  --text: #f7efff;
+  --card-width: 190px;
+  --card-height: 285px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  color: var(--text);
+  font-family: Tahoma, Arial, sans-serif;
+  background:
+    radial-gradient(circle at 15% 15%, rgba(124, 61, 172, 0.35), transparent 27%),
+    radial-gradient(circle at 85% 7%, rgba(215, 171, 81, 0.16), transparent 24%),
+    linear-gradient(135deg, var(--dark), var(--purple), #180c29);
+}
+
+.hero {
+  padding: 45px 20px 25px;
+  text-align: center;
+}
+
+.moon {
+  display: block;
+  color: var(--light-gold);
+  font-size: 3.4rem;
+  text-shadow: 0 0 22px rgba(248, 221, 160, 0.55);
+}
+
+h1 {
+  margin: 5px 0 10px;
+  color: var(--light-gold);
+  font-size: clamp(2rem, 5vw, 3.3rem);
+}
+
+.hero p {
+  max-width: 700px;
+  margin: auto;
+  color: #e4d7ef;
+  line-height: 2;
+}
+
+.container {
+  width: min(1100px, 92%);
+  margin: auto;
+  padding-bottom: 30px;
+}
+
+.panel,
+.interpretation {
+  border: 1px solid rgba(248, 221, 160, 0.28);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.07);
+  box-shadow: 0 15px 38px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(8px);
+}
+
+.panel {
+  padding: 25px;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--light-gold);
+  font-weight: bold;
+}
+
+textarea {
+  width: 100%;
+  min-height: 95px;
+  resize: vertical;
+  padding: 14px;
+  border: 1px solid rgba(248, 221, 160, 0.4);
+  border-radius: 12px;
+  outline: none;
+  color: white;
+  background: rgba(0, 0, 0, 0.2);
+  font: inherit;
+  line-height: 1.9;
+}
+
+textarea:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(215, 171, 81, 0.15);
+}
+
+.options {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+button {
+  padding: 12px 20px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  font: inherit;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.mode-btn {
+  border-color: rgba(255, 255, 255, 0.16);
+  color: white;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.mode-btn:hover,
+.mode-btn.active {
+  border-color: var(--light-gold);
+  color: #28133e;
+  background: var(--light-gold);
+}
+
+.draw-btn {
+  display: block;
+  min-width: 220px;
+  margin: 22px auto 0;
+  color: #28133e;
+  background: linear-gradient(135deg, #f5d47e, #c5902e);
+  box-shadow: 0 8px 22px rgba(215, 171, 81, 0.28);
+}
+
+.draw-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(215, 171, 81, 0.4);
+}
+
+.result-section {
+  margin-top: 34px;
+  text-align: center;
+}
+
+#message {
+  min-height: 30px;
+  color: #f0db9b;
+  font-size: 1.05rem;
+}
+
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.card-wrapper {
+  width: var(--card-width);
+  perspective: 1000px;
+}
+
+.position-title {
+  min-height: 25px;
+  margin: 0 0 10px;
+  color: var(--light-gold);
+  font-weight: bold;
+}
+
+.tarot-card {
+  position: relative;
+  width: var(--card-width);
+  height: var(--card-height);
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transition: transform 0.8s;
+}
+
+.tarot-card:focus {
+  outline: 3px solid white;
+  outline-offset: 5px;
+  border-radius: 14px;
+}
+
+.tarot-card.flipped {
+  transform: rotateY(180deg);
+}
+
+.card-face {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border: 2px solid var(--gold);
+  border-radius: 15px;
+  box-shadow: 0 11px 25px rgba(0, 0, 0, 0.35);
+  backface-visibility: hidden;
+}
+
+.card-back {
+  display: grid;
+  place-items: center;
+  color: var(--light-gold);
+  background:
+    radial-gradient(circle, transparent 20%, rgba(215, 171, 81, 0.2) 21%, transparent 22%),
+    repeating-linear-gradient(
+      45deg,
+      #291445 0,
+      #291445 10px,
+      #3b1f59 10px,
+      #3b1f59 20px
+    );
+  font-size: 4rem;
+}
+
+.card-back::after {
+  display: grid;
+  width: 112px;
+  height: 112px;
+  place-items: center;
+  border: 2px solid var(--light-gold);
+  border-radius: 50%;
+  content: "✦";
+}
+
+.card-front {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  color: #2b163c;
+  background: linear-gradient(160deg, #fff7df, #e5be64);
+  transform: rotateY(180deg);
+}
+
+.card-symbol {
+  font-size: 4.6rem;
+  transition: transform 0.2s;
+}
+
+.card-name {
+  margin: 8px 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+  transition: transform 0.2s;
+}
+
+.card-orientation {
+  color: #70421b;
+  font-size: 0.86rem;
+}
+
+.reversed .card-symbol,
+.reversed .card-name {
+  transform: rotate(180deg);
+}
+
+.interpretation {
+  width: min(780px, 100%);
+  margin: 30px auto;
+  padding: 20px;
+  border-right: 4px solid var(--gold);
+  text-align: right;
+  line-height: 2;
+}
+
+.interpretation h3 {
+  margin: 0 0 7px;
+  color: var(--light-gold);
+}
+
+.interpretation p {
+  margin: 0 0 18px;
+}
+
+footer {
+  max-width: 900px;
+  margin: auto;
+  padding: 18px 20px 32px;
+  color: #d9cce2;
+  text-align: center;
+  font-size: 0.9rem;
+  line-height: 1.9;
+}
+
+@media (max-width: 600px) {
+  :root {
+    --card-width: 160px;
+    --card-height: 240px;
+  }
+
+  .hero {
+    padding-top: 28px;
+  }
+
+  .panel {
+    padding: 18px;
+  }
+
+  .cards-container {
+    gap: 20px;
+  }
+}
